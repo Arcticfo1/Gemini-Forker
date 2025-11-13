@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Gemini Forker",
+  "version": "0.4.0",
+  "description": "Adds a 'Fork' button to Gemini chats to summarize and continue.",
+  "permissions": [
+    "scripting",
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://gemini.google.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://gemini.google.com/*"
+      ],
+      "js": [
+        "turndown.js",
+        "gemini_fork.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [ 
+        "turndown.js",
+        "tester-inject.js"
+      ],
+      "matches": [ "https://gemini.google.com/*" ]
+    }
+  ]
+}
